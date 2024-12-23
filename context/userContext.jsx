@@ -1,76 +1,20 @@
-import axios from "axios";
-import { createContext, useState, useEffect } from "react";
+import axios from 'axios'
+import { createContext, useEffect, useState } from 'react'
 
-export const UserContext = createContext({});
+export const UserContext = createContext({})
 
-export function UserContextProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [assignedInitials, setAssignedInitials] = useState("");
-  const [error, setError] = useState(null);
-
-  const token = localStorage.getItem("token");
-  const fetchUserProfile = async () => {
-    const token = localStorage.getItem("token"); //
-    if (!token) {
-      console.error("No token found");
-      return;
-    }
-
-    try {
-      const response = await axios.get("http://localhost:8000/api/profile", {
-        method: "GET", //
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (!response.ok) {
-        throw new Error("Failed to fetch profile");
-      }
-
-      const profileData = await response.json();
-      console.log("Profile data:", profileData);
-    } catch (error) {
-      console.error("Error fetching profile:", error);
-    }
-  };
-  const updateTask = async (taskId, updatedData) => {
-    if (!token) {
-      setError("No token found for task update");
-      return;
-    }
-
-    try {
-      const response = await axios.put(
-        `http://localhost:8000/task/${taskId}`,
-        updatedData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
+export function UserContextProvider({children}) {
+    const [user, setUser] = useState(null)
+    useEffect(() => {
+        if(!user){
+            axios.get('/profile').then(({data}) => {
+                setUser(data)
+            })
         }
-      );
-
-      console.log("Task updated:", response.data);
-    } catch (err) {
-      console.error("Error updating task:", err);
-      setError("Failed to update task");
-    }
-  };
-
-  return (
-    <UserContext.Provider
-      value={{
-        user,
-        setUser,
-        assignedInitials,
-        setAssignedInitials,
-        error,
-        updateTask,
-        fetchUserProfile,
-      }}
-    >
-      {children}
-    </UserContext.Provider>
-  );
+    }, [])
+    return(
+        <UserContext.Provider value={{user, setUser}}>
+            {children}
+        </UserContext.Provider>
+    )
 }
