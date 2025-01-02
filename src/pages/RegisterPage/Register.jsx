@@ -36,7 +36,7 @@ export default function Register() {
         email,
         password,
         confirmPassword,
-      });
+      }, { withCredentials: true });
       if (data.error) {
         toast.error(data.error);
       } else {
