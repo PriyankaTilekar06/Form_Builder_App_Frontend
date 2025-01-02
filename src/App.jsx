@@ -14,7 +14,7 @@ import Response from "./pages/Response/Response";
 import SharedForm from "./pages/SharedForm/SharedForm";
 
 // axios.defaults.baseURL = 'http://localhost:8000'
-axios.defaults.baseURL = 'https://form-builder-app-backend.vercel.app/'
+axios.defaults.baseURL = 'https://form-builder-app-backend.vercel.app'
 axios.defaults.withCredentials = true
 
 function App() {
