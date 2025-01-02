@@ -1,0 +1,67 @@
+.landingContainer{
+    background-color: #18181B;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px 20px 90px;
+}
+
+.navButton{
+    display: flex;
+    gap: 10px;
+}
+
+.sign{
+    background: none;
+    border: 2px solid #1A5FFF;
+    color: #1A5FFF;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.formBot{
+    background-color: #1A5FFF;
+    border: none;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.mainImg{
+    width: 100vw;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    color: #FFF;
+    justify-content: space-between;
+    padding: 0px 200px 50px 200px;
+    align-items: first baseline;
+}
+
+.footer .sec1 .heart{
+    color: red;
+}
+
+.footer .sec1 .cuvette{
+    text-decoration: underline;
+}
+
+.footer h1{
+    font-size: 2rem;
+}
+
+.sec2 p, .sec3 p, .sec4 p{
+    text-decoration: underline;
+}
+
+.arrowIcon{
+    font-size: small;
+}

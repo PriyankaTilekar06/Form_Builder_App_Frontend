@@ -1,0 +1,100 @@
+.registerContainer{
+    background-color: #18181B;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+}
+
+.backArrow{
+    color: #fff;
+    font-size: larger;
+    padding: 50px 0 0 100px;
+    cursor: pointer;
+}
+
+.triangle{
+    width: 250px;
+    height: 250px;
+    margin-top: 15%;
+    margin-right: 15%;
+
+}
+
+.registerFormContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 25%;
+    gap: 8px;
+}
+
+.registerFormContainer input{
+    border: 1px solid grey;
+    background: none;
+    border-radius: 12px;
+    padding: 10px 30px 10px 0;
+    color: #fff;
+}
+
+.registerSign{
+    border: none;
+    background-color: #1A5FFF;
+    color: #fff;
+    border-radius: 12px;
+    padding: 10px 0 10px 0;
+    margin-top: 10%;
+    box-shadow: 0px 4px 10px 0px #E9444B40;
+    cursor: pointer;
+}
+
+.or{
+    text-align: center;
+    margin: 2px;
+}
+
+.withGoogle{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-items: center;
+    border: none;
+    background-color: #1A5FFF;
+    color: #fff;
+    border-radius: 12px;
+    padding: 10px 0 10px 0;
+    box-shadow: 0px 4px 10px 0px #E9444B40;
+    cursor: pointer;
+}
+
+.googleIcon{
+    text-align: center;
+    font-size: 1.5rem;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    background-color: #fff;
+}
+
+.acc{
+    text-align: center;
+    font-size: small;
+    cursor: pointer;
+}
+
+.acc span{
+    color: #1A5FFF;
+    cursor: pointer;
+}
+
+.circleSleep{
+    margin-top: 41%;
+    width: 200px;
+    height: 100px;
+}
+
+.circleStand{
+    margin-top: 5%;
+    margin-left: 11%;
+    width: 100px;
+    height: 200px;
+}

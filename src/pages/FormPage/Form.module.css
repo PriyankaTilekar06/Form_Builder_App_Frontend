@@ -1,0 +1,343 @@
+.formContainer {
+  background-color: #18181b;
+  /* height: 100%; */
+  color: #fff;
+}
+
+.formNav {
+  display: flex;
+  flex-direction: row;
+  height: 10%;
+  border-bottom: 1px solid grey;
+  padding: 0px 50px 0px 30px;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.formNavInput input {
+  background-color: #37373e;
+  border: none;
+  padding: 5px 30px 5px 10px;
+  border-radius: 5px;
+}
+
+.formBtn {
+  margin-left: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.formFlow {
+  border: 2px solid #7ea6ff;
+  background: none;
+  color: #7ea6ff;
+  padding: 8px 15px;
+  border-radius: 6px;
+}
+
+.formResponse {
+  border: none;
+  background: none;
+  color: #fff;
+}
+
+.navTheme {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 54px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.sliderRound {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.sliderRound:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .sliderRound {
+  background-color: #2196f3;
+}
+
+input:focus + .sliderRound {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .sliderRound:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.sliderRound {
+  border-radius: 34px;
+}
+
+.sliderRound:before {
+  border-radius: 50%;
+}
+
+.light {
+  background-color: #fff;
+  color: #000;
+
+  .formResponse {
+    color: #000;
+  }
+
+  .mainFormCon {
+    background-color: #fff;
+  }
+
+  .formLeft {
+    background-color: #fff;
+    border: 1px solid #00000029;
+    box-shadow: 0px 10px 10px -5px #0000000a;
+    box-shadow: 0px 20px 25px -5px #0000001a;
+  }
+
+  .formHeading {
+    color: #000;
+  }
+
+  .mainFormCon button {
+    background-color: #fff;
+    border: 1px solid #d6d6d6;
+    color: #000;
+  }
+}
+
+.dark {
+  background-color: #18181b;
+  color: #fff;
+}
+
+.formBtns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.formShare {
+  border: none;
+  background-color: #848890;
+  padding: 8px 15px;
+  border-radius: 4px;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+/* .formShare {
+  background-color: gray;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  
+} */
+
+.activeShare {
+  background-color: #1A5FFF;
+  color: white;
+  cursor: pointer;
+}
+
+
+.formSave {
+  border: none;
+  background-color: #4ade80cc;
+  padding: 8px 15px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.formClose {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  color: #f55050;
+}
+
+.mainFormCon {
+  background-color: #1f1f23;
+  width: 100%;
+  display: flex;
+}
+
+.formLeft {
+  width: 20%;
+  height: 100vh;
+  background-color: #18181b;
+  border: 1px solid #ffffff29;
+  box-shadow: 0px 10px 10px -5px #0000000a;
+  border-radius: 8px;
+  margin: 20px;
+  padding: 10px;
+}
+
+.formBubbles,
+.formInput {
+  margin-bottom: 20px;
+}
+
+.formHeading {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.formBubbles,
+.formInput {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.formBubbles .formHeading,
+.formInput .formHeading {
+  grid-column: 1 / -1;
+}
+
+button {
+  border: 1px solid #27272a;
+  background: #1f1f23;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+.btnIcon {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #2196f3;
+}
+
+.inputIcon {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #ffa54c;
+}
+
+.formRight {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  padding-top: 30px;
+  padding-left: 250px;
+  gap: 20px;
+}
+
+.formStart {
+  width: 200px;
+  height: 30px;
+  padding: 10px;
+  background-color: #18181b;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 16px;
+}
+
+.startIcon {
+  font-size: 1.5rem;
+}
+
+.modalContainer {
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+.formRightCon {
+  background-color: #18181b;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  width: 250px;
+}
+.formRightCon h1 {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+}
+.formInputContainer {
+  display: flex;
+  align-items: center;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 10px;
+}
+.formInputContainer i {
+  color: #007bff;
+  margin-right: 10px;
+}
+.formInputContainer input {
+  background-color: transparent;
+  border: none;
+  color: #a9a9a9;
+  outline: none;
+  flex-grow: 1;
+}
+
+.formRightText {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.formDeleteIcon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #2a2a2a;
+  border-radius: 50%;
+  padding: 10px;
+}
+.formDeleteIcon .formDel {
+  color: #ff4d4d;
+  font-size: 18px;
+}

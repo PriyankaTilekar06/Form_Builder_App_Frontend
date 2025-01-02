@@ -1,0 +1,72 @@
+.settingContainer {
+    background-color: #1c1c1e;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+.modal {
+    text-align: center;
+}
+h1 {
+    margin: 50px 0 80px 0;
+}
+.formGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.settingIcon{
+    margin-right: 10px;
+    color: grey;
+    font-size: 20px;
+}
+
+.formGroup input {
+    width: 300px;
+    padding: 10px 40px 10px 10px;
+    border: 1.38px solid #D0D0D0;
+    border-radius: 5px;
+    background-color: #1c1c1e;
+    color: #ffffff;
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.btn {
+    width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #1A5FFF;
+    border-radius: 50px;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+.logout {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    color: #CF3636;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.logIcon{
+    font-size: 20px;
+    align-items: center;
+}
