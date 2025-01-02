@@ -283,6 +283,7 @@ export default function SharedForm() {
         {currentInputIndex < formInputs.length && (
           <>
             <input
+            className={styles.shareInput}
               placeholder="Type a message..."
               type="text"
               onKeyDown={(e) => {

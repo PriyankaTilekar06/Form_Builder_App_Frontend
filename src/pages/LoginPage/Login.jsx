@@ -63,7 +63,7 @@ export default function Login() {
           value={data.password}
           onChange={(e) => setData({ ...data, password: e.target.value })}
         />
-        <button type="submit" className={styles.login}>
+        <button type="submit" className={styles.formLogin}>
           Log In
         </button>
         <p className={styles.or}>OR</p>
