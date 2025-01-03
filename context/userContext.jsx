@@ -15,19 +15,21 @@ export function UserContextProvider({children}) {
     useEffect(() => {
         if (!user) {
             // axios.get('/auth/profile', {withCredentials: true} )
-            axios.get('/profile', {
+            axios.get('https://form-builder-app-backend.vercel.app/profile', {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
-            }, {withCredentials: true})
+                withCredentials: true,
+            })
                 .then(({ data }) => {
                     console.log('Fetched User:', data);
-                    setUser(data); 
+                    setUser(data);
                 })
                 .catch((error) => {
                     console.error('Profile fetch error:', error.message);
-                    setUser(null); // Fallback to null if the request fails
+                    setUser(null);
                 });
+            
         }
     }, []);
     return(
