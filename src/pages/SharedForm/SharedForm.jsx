@@ -73,7 +73,7 @@
 
 
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./SharedForm.module.css";
 
 export default function SharedForm() {
@@ -89,10 +89,8 @@ export default function SharedForm() {
   const handleSend = (response) => {
     if (!response || response.trim() === "") return;
 
-    // Save the response
-    const updatedResponses = [...responses];
-    updatedResponses[currentIndex] = response;
-    setResponses(updatedResponses);
+    // Add the response to the list
+    setResponses([...responses, { question: questions[currentIndex], response }]);
 
     // Move to the next question
     if (currentIndex < questions.length - 1) {
@@ -103,21 +101,22 @@ export default function SharedForm() {
   return (
     <div className={styles.chatContainer}>
       <div className={styles.messages}>
-        {/* Display the current question */}
-        <div className={styles.questionBubble}>
-          {questions[currentIndex]}
-        </div>
-
-        {/* Display the response if available */}
-        {responses[currentIndex] && (
-          <div className={styles.responseBubble}>
-            {responses[currentIndex]}
+        {/* Display all responses */}
+        {responses.map((entry, index) => (
+          <div key={index}>
+            <div className={styles.questionBubble}>{entry.question}</div>
+            <div className={styles.responseBubble}>{entry.response}</div>
           </div>
+        ))}
+
+        {/* Display the current question */}
+        {currentIndex < questions.length && (
+          <div className={styles.questionBubble}>{questions[currentIndex]}</div>
         )}
       </div>
 
       {/* Input box for the user's response */}
-      {!responses[currentIndex] && (
+      {currentIndex < questions.length && (
         <div className={styles.inputContainer}>
           <input
             type="text"
