@@ -1,16 +1,59 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Setting.module.css'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-hot-toast";
 import { CiUser } from "react-icons/ci";
 import { CiLock } from "react-icons/ci";
 import { HiOutlineLogout } from "react-icons/hi";
 
 export default function Setting() {
   const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    new_password: "",
+  });
 
   const handleLogOut = () =>{
+    localStorage.clear();
     navigate('/login')
   }
+
+  const updateUser = async () => {
+    try {
+      const _id = localStorage.getItem("userId");
+      if (!_id) {
+        toast.error("User ID is missing!");
+        return;
+      }
+
+      const response = await axios.put(
+        "https://form-builder-app-backend.vercel.app/api/v1/auth/update",
+        { ...formData, _id },
+        { withCredentials: true }
+      );
+
+      if (response.data.error) {
+        toast.error(response.data.error);
+      } else {
+        toast.success("User updated successfully!");
+        localStorage.setItem("name", response.data.user.name);
+        localStorage.setItem("email", response.data.user.email);
+        setFormData({
+          name: "",
+          email: "",
+          password: "",
+          new_password: "",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred. Please try again.");
+    }
+  };
+  
 
   return (
     <div className={styles.settingContainer}>
@@ -32,7 +75,7 @@ export default function Setting() {
             <CiLock className={styles.settingIcon}/>
             <input type="password" placeholder="New Password" />
         </div>
-        <button className={styles.btn}>Update</button>
+        <button className={styles.btn} onClick={updateUser}>Update</button>
     </div>
     <div className={styles.logout} onClick={handleLogOut}>
         <HiOutlineLogout className={styles.logIcon}/>
