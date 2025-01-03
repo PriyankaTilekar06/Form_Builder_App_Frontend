@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./SharedForm.module.css";
 
 export default function SharedForm() {
@@ -10,18 +10,6 @@ export default function SharedForm() {
   ]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [responses, setResponses] = useState([]);
-
-  // useEffect(() => {
-  //   // Simulate fetching data or set it dynamically
-  //   if (!questions.length) {
-  //     setQuestions(modals.map((modal) => modal.title)); // Example of dynamic data
-  //   }
-  // }, [modals]);
-  useEffect(() => {
-    const savedQuestions = JSON.parse(localStorage.getItem("formInputs")) || [];
-    setQuestions(savedQuestions.map((input) => input.title));
-  }, []);
-  
 
   const handleSend = (response) => {
     if (!response || response.trim() === "") return;
@@ -81,6 +69,3 @@ export default function SharedForm() {
     </div>
   );
 }
-
-
-
