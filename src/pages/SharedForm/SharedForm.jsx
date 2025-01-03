@@ -3,6 +3,7 @@ import styles from "./SharedForm.module.css";
 
 export default function SharedForm() {
   const [questions, setQuestions] = useState([
+    "hi",
     "What is your name?",
     "What is your favorite color?",
     "Where are you from?",
