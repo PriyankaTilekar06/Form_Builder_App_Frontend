@@ -8,7 +8,8 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
+  const userName = localStorage.getItem("name")
   const navigate = useNavigate();
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const [isFolderPopupOpen, setIsFolderPopupOpen] = useState(false);
@@ -123,10 +124,10 @@ export default function Dashboard() {
     >
       <nav className={styles.dashboardNav}>
         <div className={styles.dashName}>
-          {!!user && (
+          {!!userName && (
             <div className={styles.dashNameWrapper}>
               <p>
-                {user.name}'s workspace{" "}
+                {userName}'s workspace{" "}
                 <span
                   className={`${styles.arrowDown} ${
                     isDropdownOpen ? "up" : ""

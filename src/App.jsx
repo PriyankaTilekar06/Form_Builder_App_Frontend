@@ -2,7 +2,7 @@ import "./App.css";
 import { Routes, Route} from 'react-router-dom'
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast'
-import { UserContextProvider } from "../context/userContext";
+// import { UserContextProvider } from "../context/userContext";
 import LandingPage from "./pages/landingPage/LandingPage";
 import Register from "./pages/RegisterPage/Register";
 import Login from "./pages/LoginPage/Login";
@@ -18,7 +18,8 @@ axios.defaults.withCredentials = true
 
 function App() {
   return(
-    <UserContextProvider>
+    // <UserContextProvider>
+    <>
     <Toaster position="top-right" toastOptions={{duration: 2000}} />
     <Routes>
       <Route path="/" element={<Login />} />
@@ -31,7 +32,8 @@ function App() {
       <Route path="/response" element={<Response />}/>
       <Route path="/sharedform" element={<SharedForm />} />
     </Routes>
-    </UserContextProvider>
+    {/* </UserContextProvider> */}
+    </>
   )
 }
 
