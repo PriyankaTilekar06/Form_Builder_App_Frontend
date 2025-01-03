@@ -20,18 +20,34 @@ export default function Login() {
     e.preventDefault();
     const { email, password } = data;
     try {
-      const { data } = await axios.post(
+      // const { data } = await axios.post(
+      //   "https://form-builder-app-backend.vercel.app/login",
+      //   { email, password },
+      //   { withCredentials: true }
+      // );
+      // if (data.error) {
+      //   toast.error(data.error);
+      // } else {
+      //   localStorage.setItem("token", data.token);
+      //   localStorage.setItem("name", data.user.name);
+      //   localStorage.setItem("email", data.user.email);
+      //   localStorage.setItem("userId", data.user._id);
+      //   setData({});
+      //   navigate("/dashboard");
+      // }
+      const response = await axios.post(
         "https://form-builder-app-backend.vercel.app/login",
         { email, password },
         { withCredentials: true }
       );
-      if (data.error) {
-        toast.error(data.error);
+
+      if (response.data.error) {
+        toast.error(response.data.error);
       } else {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("name", data.user.name);
-        localStorage.setItem("email", data.user.email);
-        localStorage.setItem("userId", data.user._id);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("name", response.data.user.name);
+        localStorage.setItem("email", response.data.user.email);
+        localStorage.setItem("userId", response.data.user._id);
         setData({});
         navigate("/dashboard");
       }
