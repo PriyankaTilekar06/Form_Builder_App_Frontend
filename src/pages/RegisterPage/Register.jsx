@@ -31,7 +31,7 @@ export default function Register() {
 
     try {
       setLoading(true);
-      const { data } = await axios.post("/register", {
+      const { data } = await axios.post("https://form-builder-app-frontend-two.vercel.app/register", {
         name,
         email,
         password,
