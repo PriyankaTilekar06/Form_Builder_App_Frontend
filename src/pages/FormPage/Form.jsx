@@ -16,6 +16,7 @@ import { FaRegStar } from "react-icons/fa";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { BiSolidFlagAlt } from "react-icons/bi";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import SharedForm from "../SharedForm/SharedForm";
 
 export default function Form() {
   const navigate = useNavigate();
@@ -213,6 +214,7 @@ export default function Form() {
           ))}
         </div>
       </div>
+      <SharedForm questions={modals.map((modal) => modal.title)} />
     </div>
   );
 }
