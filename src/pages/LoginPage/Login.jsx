@@ -28,6 +28,10 @@ export default function Login() {
       if (data.error) {
         toast.error(data.error);
       } else {
+        // localStorage.setItem("token", data.token);
+        // localStorage.setItem("name", data.user.name);
+        // localStorage.setItem("email", data.user.email);
+        // localStorage.setItem("userId", data.user._id);
         setData({});
         navigate("/dashboard");
       }

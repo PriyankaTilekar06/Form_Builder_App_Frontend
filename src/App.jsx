@@ -1,6 +1,5 @@
 import "./App.css";
 import { Routes, Route} from 'react-router-dom'
-import Home from "./pages/Home";
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast'
 import { UserContextProvider } from "../context/userContext";

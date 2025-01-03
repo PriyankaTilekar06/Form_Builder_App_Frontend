@@ -15,7 +15,7 @@ export function UserContextProvider({children}) {
     useEffect(() => {
         if (!user) {
             // axios.get('/auth/profile', {withCredentials: true} )
-            axios.get('https://form-builder-app-backend.vercel.app/profile', {
+            axios.get('/profile', {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
