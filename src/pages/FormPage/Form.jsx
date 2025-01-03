@@ -46,7 +46,7 @@ export default function Form() {
     );
   };
 
-  const handleShare = () => {
+  const handleShare = async () => {
     if (modals.length > 0) {
       const formInputs = modals.map((modal) => ({
         id: modal.id,
@@ -54,11 +54,24 @@ export default function Form() {
         type: modal.title.toLowerCase(),
         placeholder: `Enter your ${modal.title.toLowerCase()}`,
       }));
+  
+      try {
+        const currentUrl = window.location.href;
+        const linkToCopy = `${currentUrl}/share/${userId}`;
+        await navigator.clipboard.writeText(linkToCopy);
+        toast.success("Link Copied");
+      } catch (err) {
+        console.error("Failed to copy: ", err);
+        toast.error("Failed to copy link");
+      }
+  
       localStorage.setItem("formInputs", JSON.stringify(formInputs));
       window.open("/sharedform", "_blank");
+    } else {
+      toast.warning("No modals available to share");
     }
   };
-
+  
   const handleSave = () => {
     if (modals.length > 0) {
       const hasEmptyInput = modals.some((modal) => !modal.value?.trim());
