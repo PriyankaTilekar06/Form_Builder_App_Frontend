@@ -21,7 +21,7 @@ export default function Login() {
     const { email, password } = data;
     try {
       const { data } = await axios.post(
-        "https://form-builder-app-backend.vercel.app/login",
+        "https://form-builder-app-backend.vercel.app/api/v1/auth/login",
         { email, password },
         { withCredentials: true }
       );
