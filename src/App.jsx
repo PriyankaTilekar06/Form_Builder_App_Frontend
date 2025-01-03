@@ -1,7 +1,7 @@
 import "./App.css";
-import { Routes, Route} from 'react-router-dom'
-import axios from 'axios'
-import { Toaster } from 'react-hot-toast'
+import { Routes, Route } from "react-router-dom";
+import axios from "axios";
+import { Toaster } from "react-hot-toast";
 import { UserContextProvider } from "../context/userContext";
 import LandingPage from "./pages/landingPage/LandingPage";
 import Register from "./pages/RegisterPage/Register";
@@ -13,26 +13,27 @@ import Response from "./pages/Response/Response";
 import SharedForm from "./pages/SharedForm/SharedForm";
 
 // axios.defaults.baseURL = 'http://localhost:8000'
-axios.defaults.baseURL = 'https://form-builder-app-backend.vercel.app'
-axios.defaults.withCredentials = true
+axios.defaults.baseURL = "https://form-builder-app-backend.vercel.app";
+axios.defaults.withCredentials = true;
 
 function App() {
-  return(
-    <UserContextProvider>
-    <Toaster position="top-right" toastOptions={{duration: 2000}} />
+  return (
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/dashboard" element={<Dashboard />}/>
-      <Route path="/landingpage" element={<LandingPage />}/>
-      <Route path="/setting" element={<Setting />}/>
-      <Route path="/form" element={<Form />}/>
-      <Route path="/response" element={<Response />}/>
-      <Route path="/sharedform" element={<SharedForm />} />
+      <UserContextProvider>
+        <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
+
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/landingpage" element={<LandingPage />} />
+        <Route path="/setting" element={<Setting />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/response" element={<Response />} />
+        <Route path="/sharedform" element={<SharedForm />} />
+      </UserContextProvider>
     </Routes>
-    </UserContextProvider>
-  )
+  );
 }
 
 export default App;
