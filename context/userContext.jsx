@@ -5,6 +5,7 @@ export const UserContext = createContext({})
 
 export function UserContextProvider({children}) {
     const [user, setUser] = useState(null)
+    const token = localStorage.getItem('token') || null
     // useEffect(() => {
     //     if(!user){
     //         axios.get('/profile', {withCredentials: true}).then(({data}) => {
@@ -19,7 +20,7 @@ export function UserContextProvider({children}) {
                 try {
                     const { data } = await axios.get('/profile', {
                         headers: {
-                            Authorization: `Bearer ${localStorage.getItem('token')}`,
+                            Authorization: `Bearer ${token}`,
                         },
                         withCredentials: true,
                     });
