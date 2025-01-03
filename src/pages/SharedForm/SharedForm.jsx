@@ -44,7 +44,7 @@ export default function SharedForm() {
       </div>
 
       {currentIndex < questions.length && (
-        <div className={styles.inputContainer} style={{ pointerEvents: currentIndex === questions.length ? 'none' : 'auto' }}>
+        <div className={styles.inputContainer}>
           <input
             type="text"
             placeholder="Type your response..."
@@ -55,7 +55,6 @@ export default function SharedForm() {
                 e.target.value = "";
               }
             }}
-            disabled={currentIndex === questions.length}
           />
           <button
             onClick={() => {
@@ -64,7 +63,6 @@ export default function SharedForm() {
               input.value = "";
             }}
             className={styles.sendButton}
-            disabled={currentIndex === questions.length}
           >
             Send
           </button>
