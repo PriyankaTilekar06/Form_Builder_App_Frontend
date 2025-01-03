@@ -1,15 +1,24 @@
-// import React, { useState } from "react";
+// import React, { useEffect, useState } from "react";
 // import styles from "./SharedForm.module.css";
 
-// export default function SharedForm() {
-//   const [questions, setQuestions] = useState([
-//     "What is your name?",
-//     "What is your favorite color?",
-//     "Where are you from?",
-//     "What is your hobby?",
-//   ]);
+// export default function SharedForm({ questions = [] }) {
 //   const [currentIndex, setCurrentIndex] = useState(0);
 //   const [responses, setResponses] = useState([]);
+//   const [questions, setQuestions] = useState([]);
+// // const [modals, setModals] = useState([]);
+
+
+//   // useEffect(() => {
+//   //   // Simulate fetching data or set it dynamically
+//   //   if (!questions.length) {
+//   //     setQuestions(modals.map((modal) => modal.title)); // Example of dynamic data
+//   //   }
+//   // }, [modals]);
+//   useEffect(() => {
+//     const savedQuestions = JSON.parse(localStorage.getItem("formInputs")) || [];
+//     setQuestions(savedQuestions.map((input) => input.title));
+//   }, []);
+  
 
 //   const handleSend = (response) => {
 //     if (!response || response.trim() === "") return;
@@ -22,6 +31,11 @@
 //       setCurrentIndex(currentIndex + 1);
 //     }
 //   };
+
+//   if (!questions || questions.length === 0) {
+//     return <div>Loading questions...</div>;
+//   }
+  
 
 //   return (
 //     <div className={styles.chatContainer}>
@@ -72,19 +86,32 @@
 
 
 
-import React, { useState } from "react";
+
+
+import React, { useEffect, useState } from "react";
 import styles from "./SharedForm.module.css";
 
-export default function SharedForm({ questions }) {
+export default function SharedForm({ questions: propQuestions = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [responses, setResponses] = useState([]);
+  const [questions, setQuestions] = useState([]);
+
+  // Load questions from props or local storage
+  useEffect(() => {
+    if (propQuestions.length > 0) {
+      setQuestions(propQuestions);
+    } else {
+      const savedQuestions = JSON.parse(localStorage.getItem("formInputs")) || [];
+      setQuestions(savedQuestions.map((input) => input.title));
+    }
+  }, [propQuestions]);
 
   const handleSend = (response) => {
     if (!response || response.trim() === "") return;
 
     // Add the response to the list
-    setResponses([
-      ...responses,
+    setResponses((prevResponses) => [
+      ...prevResponses,
       { question: questions[currentIndex], response },
     ]);
 
@@ -93,6 +120,10 @@ export default function SharedForm({ questions }) {
       setCurrentIndex(currentIndex + 1);
     }
   };
+
+  if (questions.length === 0) {
+    return <div>Loading questions...</div>;
+  }
 
   return (
     <div className={styles.chatContainer}>
@@ -126,8 +157,8 @@ export default function SharedForm({ questions }) {
             }}
           />
           <button
-            onClick={() => {
-              const input = document.querySelector(`.${styles.inputField}`);
+            onClick={(e) => {
+              const input = e.target.previousSibling;
               handleSend(input.value);
               input.value = "";
             }}
@@ -140,3 +171,6 @@ export default function SharedForm({ questions }) {
     </div>
   );
 }
+
+
+
