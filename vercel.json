@@ -2,8 +2,11 @@
     "version": 2,
     "builds": [
       {
-        "src": "src/**/*",
-        "use": "@vercel/static-build"
+        "src": "package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "build"
+        }
       }
     ],
     "routes": [
@@ -11,6 +14,12 @@
         "src": "/(.*)",
         "dest": "/index.html"
       }
-    ]
+    ],
+    "rewrites": [],
+    "redirects": [],
+    "headers": [],
+    "env": {
+      "REACT_APP_API_URL": "https://form-builder-app-backend.vercel.app"
+    }
   }
   
