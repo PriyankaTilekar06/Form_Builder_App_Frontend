@@ -14,22 +14,23 @@ export function UserContextProvider({children}) {
     // }, [])
     useEffect(() => {
         if (!user) {
-            // axios.get('/auth/profile', {withCredentials: true} )
-            axios.get('/profile', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
-                },
-                withCredentials: true,
-            })
-                .then(({ data }) => {
-                    console.log('Fetched User:', data);
+            // Use try-catch for better error handling
+            const fetchUser = async () => {
+                try {
+                    const { data } = await axios.get('/profile', {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`,
+                        },
+                        withCredentials: true,
+                    });
                     setUser(data);
-                })
-                .catch((error) => {
+                } catch (error) {
                     console.error('Profile fetch error:', error.message);
-                    setUser(null);
-                });
-            
+                    setUser(null); // Set user to null if error occurs
+                }
+            };
+
+            fetchUser();
         }
     }, []);
     return(
