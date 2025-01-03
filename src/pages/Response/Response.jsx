@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import styles from "./Response.module.css";
 import { useNavigate } from "react-router-dom";
 import PieChart from "../../components/PieChart";
+import SharedForm from "./SharedForm"; // Import SharedForm component
 
 export default function Response() {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const [isSharedFormOpen, setIsSharedFormOpen] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkTheme((prevTheme) => !prevTheme);
@@ -13,6 +15,10 @@ export default function Response() {
 
   const handleFlow = () => {
     navigate("/response");
+  };
+
+  const openSharedForm = () => {
+    setIsSharedFormOpen(true); // Set to true when SharedForm is opened
   };
 
   return (
@@ -41,7 +47,9 @@ export default function Response() {
           <p>Dark</p>
         </div>
         <div className={styles.formBtns}>
-          <button className={styles.formShare}>Share</button>
+          <button className={styles.formShare} onClick={openSharedForm}>
+            Share
+          </button>
           <button className={styles.formSave}>Save</button>
           <button className={styles.formClose}>X</button>
         </div>
@@ -108,6 +116,8 @@ export default function Response() {
       <div>
         <PieChart />
       </div>
+
+      {isSharedFormOpen && <SharedForm />} {/* Conditionally render SharedForm */}
     </div>
   );
 }
